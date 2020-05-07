@@ -3,12 +3,12 @@ import Item from "./item";
 
 class List extends Component {
   render() {
-    const { items, onDelete, onDeleteAll } = this.props;
+    const { items, onEdit, onDelete, onDeleteAll } = this.props;
     return (
       <ul className="list-group my-3">
         <h3 className="text-center">Todo List</h3>
         {items.map((it) => (
-          <Item data={it} onDelete={onDelete} />
+          <Item key={it._id} data={it} onEdit={onEdit} onDelete={onDelete} />
         ))}
         <button
           type="button"

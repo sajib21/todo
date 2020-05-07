@@ -3,6 +3,7 @@ import Input from "./components/input";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.css";
 import List from "./components/list";
+import "./App.css";
 
 class App extends Component {
   state = {
@@ -35,10 +36,10 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state.items);
+    //console.log(this.state.items);
     return (
-      <React.Fragment>
-        <main className="container">
+      <main className="container">
+        <div className="img">
           <div className="row">
             <div className="col">
               <h1 className="text-center">TODO</h1>
@@ -54,8 +55,8 @@ class App extends Component {
               ></List>
             </div>
           </div>
-        </main>
-      </React.Fragment>
+        </div>
+      </main>
     );
   }
 }

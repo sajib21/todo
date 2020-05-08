@@ -19,8 +19,15 @@ const Input = (props) => {
             onChange={onChange}
           />
         </div>
-        <button className="btn btn-block btn-primary mt-3" type="submit">
-          Add
+        <button
+          className={
+            item && item._id
+              ? "btn btn-block btn-success mt-3"
+              : "btn btn-block btn-primary mt-3"
+          }
+          type="submit"
+        >
+          {item && item._id ? "Edit" : "Add"}
         </button>
       </form>
     </div>

@@ -16,6 +16,7 @@ class App extends Component {
       { _id: "4", task: "react", priority: 0 },
     ],
     item: null,
+    error: {},
   };
 
   schema = {

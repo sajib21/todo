@@ -25,10 +25,10 @@ class App extends Component {
 
   handleChange = (e) => {
     const item = { ...this.state.item };
-    if (e.currentTarget) item.task = e.currentTarget.value;
-    //console.log("prechange", item);
+    console.log("handle cange: ", e.currentTarget);
+    const { name, value } = e.currentTarget;
+    if (e.currentTarget) item[name] = value;
     this.setState({ item });
-    //console.log("Change", e.currentTarget.value, this.state.item);
   };
 
   handleSubmit = () => {
@@ -56,12 +56,13 @@ class App extends Component {
     this.setState({ item });
   };
 
-  handleSort = () => {
+  handleSort = (key) => {
     const items = [...this.state.items];
     items.sort((a, b) => {
-      if (a.task < b.task) return -1;
+      if (a[key] < b[key]) return -1;
       return +1;
     });
+    if (key === "priority") items.reverse();
     this.setState({ items });
   };
 

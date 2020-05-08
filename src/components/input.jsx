@@ -11,7 +11,10 @@ class Input extends Component {
     const { item, onChange, onSubmit } = this.props;
     return (
       <div className="card card-body my-3">
-        <form onSubmit={(e) => this.handleSubmit(e, onSubmit)}>
+        <form
+          className="form-group"
+          onSubmit={(e) => this.handleSubmit(e, onSubmit)}
+        >
           <div className="input-group">
             <div className="input-group-prepend">
               <div className="input-group-text bg-primary text-white">
@@ -20,9 +23,18 @@ class Input extends Component {
             </div>
             <input
               type="text"
-              className="form-control"
+              name="task"
+              className="form-control mx-2"
               placeholder="Add a task"
               value={item ? item.task : ""}
+              onChange={onChange}
+            />
+            <input
+              type="text"
+              name="priority"
+              className="form-control mx-2"
+              placeholder="Add priority"
+              value={item ? item.priority : ""}
               onChange={onChange}
             />
           </div>

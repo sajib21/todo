@@ -14,9 +14,16 @@ class List extends Component {
           <button
             type="button"
             className="btn btn-block btn-primary mt-3 mr-2"
-            onClick={onSort}
+            onClick={() => onSort("task")}
           >
-            Sort
+            Sort Alpha
+          </button>
+          <button
+            type="button"
+            className="btn btn-block btn-primary mt-3 mr-2"
+            onClick={() => onSort("priority")}
+          >
+            Sort Prio
           </button>
           <button
             type="button"

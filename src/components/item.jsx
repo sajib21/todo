@@ -5,7 +5,10 @@ class Item extends Component {
     const { data, onEdit, onDelete } = this.props;
     return (
       <li className="list-group-item d-flex justify-content-between my-2">
-        <input type="checkbox" />
+        <div>
+          <input type="checkbox" />
+          <b className="ml-5">{data.priority}</b>
+        </div>
         <h6>{data.task}</h6>
         <div>
           <span className="mx-2 text-success">

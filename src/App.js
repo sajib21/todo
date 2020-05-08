@@ -5,16 +5,22 @@ import "font-awesome/css/font-awesome.css";
 import List from "./components/list";
 import "./App.css";
 import uuid from "react-uuid";
+import Joi from "joi-browser";
 
 class App extends Component {
   state = {
     items: [
-      { _id: "1", task: "sajib" },
-      { _id: "2", task: "shahriar" },
-      { _id: "3", task: "todo" },
-      { _id: "4", task: "react" },
+      { _id: "1", task: "sajib", priority: 0 },
+      { _id: "2", task: "shahriar", priority: 0 },
+      { _id: "3", task: "todo", priority: 0 },
+      { _id: "4", task: "react", priority: 0 },
     ],
     item: null,
+  };
+
+  schema = {
+    _id: Joi.string(),
+    task: Joi.string().required().label("Task"),
   };
 
   handleChange = (e) => {
@@ -25,8 +31,8 @@ class App extends Component {
     //console.log("Change", e.currentTarget.value, this.state.item);
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
+  handleSubmit = () => {
+    console.log("App : handleSubmit");
     const newItem = { ...this.state.item };
     //console.log("handleSubmit", newItem);
     const items = [...this.state.items];
@@ -73,6 +79,11 @@ class App extends Component {
     //console.log("HandleDeleteAll");
     const items = [];
     this.setState({ items });
+    if (this.state.item) {
+      const item = { ...this.state.item };
+      item._id = null;
+      this.setState({ item });
+    }
   };
 
   render() {

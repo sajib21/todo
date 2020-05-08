@@ -50,6 +50,15 @@ class App extends Component {
     this.setState({ item });
   };
 
+  handleSort = () => {
+    const items = [...this.state.items];
+    items.sort((a, b) => {
+      if (a.task < b.task) return -1;
+      return +1;
+    });
+    this.setState({ items });
+  };
+
   handleDelete = (t) => {
     const items = this.state.items.filter((it) => it._id !== t._id);
     this.setState({ items });
@@ -82,6 +91,7 @@ class App extends Component {
               <List
                 items={this.state.items}
                 onEdit={this.handleEdit}
+                onSort={this.handleSort}
                 onDelete={this.handleDelete}
                 onDeleteAll={this.handleDeleteAll}
               ></List>

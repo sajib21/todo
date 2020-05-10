@@ -7,7 +7,13 @@ class Item extends Component {
       <li className="list-group-item d-flex justify-content-between my-2">
         <div>
           <input type="checkbox" />
-          <b className="ml-5">{data.priority}</b>
+          <b className="mx-5">{data.priority}</b>
+          <a className="mx-2">
+            {data && data.date ? data.date.toDateString() : ""}
+          </a>
+          <i className="mx-2">
+            {data && data.due ? data.due.toDateString() : ""}
+          </i>
         </div>
         <h6>{data.task}</h6>
         <div>

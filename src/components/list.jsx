@@ -27,6 +27,13 @@ class List extends Component {
           </button>
           <button
             type="button"
+            className="btn btn-block btn-primary mt-3 mr-2"
+            onClick={() => onSort("due")}
+          >
+            Sort Due
+          </button>
+          <button
+            type="button"
             className="btn btn-block btn-danger mt-3 ml-2"
             onClick={onDeleteAll}
           >

@@ -10,10 +10,34 @@ import Joi from "joi-browser";
 class App extends Component {
   state = {
     items: [
-      { _id: "1", task: "sajib", priority: 0 },
-      { _id: "2", task: "shahriar", priority: 0 },
-      { _id: "3", task: "todo", priority: 0 },
-      { _id: "4", task: "react", priority: 0 },
+      {
+        _id: "1",
+        task: "sajib",
+        priority: 0,
+        date: new Date(),
+        due: "",
+      },
+      {
+        _id: "2",
+        task: "shahriar",
+        priority: 0,
+        date: new Date(),
+        due: "",
+      },
+      {
+        _id: "3",
+        task: "todo",
+        priority: 0,
+        date: new Date(),
+        due: "",
+      },
+      {
+        _id: "4",
+        task: "react",
+        priority: 0,
+        date: new Date(),
+        due: "",
+      },
     ],
     item: null,
     error: {},
@@ -24,16 +48,15 @@ class App extends Component {
     task: Joi.string().required().label("Task"),
   };
 
-  handleChange = (e) => {
+  handleChange = (name, value) => {
     const item = { ...this.state.item };
-    console.log("handle cange: ", e.currentTarget);
-    const { name, value } = e.currentTarget;
-    if (e.currentTarget) item[name] = value;
+    console.log("handle cange: ", name, value);
+    item[name] = value;
     this.setState({ item });
   };
 
   handleSubmit = () => {
-    console.log("App : handleSubmit");
+    //console.log("App : handleSubmit");
     const newItem = { ...this.state.item };
     //console.log("handleSubmit", newItem);
     const items = [...this.state.items];
@@ -45,11 +68,13 @@ class App extends Component {
       else items.push(newItem);
     } else {
       newItem._id = uuid();
+      newItem.date = new Date();
       items.push(newItem);
     }
 
     //console.log("New Items: ", items);
     this.setState({ items, item: null });
+    //console.log("new items", this.state.items);
   };
 
   handleEdit = (item) => {
@@ -89,7 +114,6 @@ class App extends Component {
   };
 
   render() {
-    console.log("render", this.state.items);
     return (
       <main className="container">
         <div>

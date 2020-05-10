@@ -1,10 +1,22 @@
 import React, { Component } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 class Input extends Component {
   handleSubmit = (e, doSubmit) => {
     console.log("input: handleSubmit", e);
     e.preventDefault();
     doSubmit();
+  };
+
+  handleChange = (e, onChange) => {
+    const { name, value } = e.currentTarget;
+    if (e.currentTarget) onChange(name, value);
+  };
+
+  handleDateChange = (date, onChange) => {
+    console.log("Change Date: ", date);
+    onChange("due", date);
   };
 
   render() {
@@ -27,7 +39,7 @@ class Input extends Component {
               className="form-control mx-2"
               placeholder="Add a task"
               value={item ? item.task : ""}
-              onChange={onChange}
+              onChange={(e) => this.handleChange(e, onChange)}
             />
             <input
               type="text"
@@ -35,7 +47,13 @@ class Input extends Component {
               className="form-control mx-2"
               placeholder="Add priority"
               value={item ? item.priority : ""}
-              onChange={onChange}
+              onChange={(e) => this.handleChange(e, onChange)}
+            />
+            <DatePicker
+              type="text"
+              name="due"
+              selected={item ? item.due : ""}
+              onChange={(date) => this.handleDateChange(date, onChange)}
             />
           </div>
           <button

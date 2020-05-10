@@ -42,7 +42,7 @@ class Input extends Component {
               onChange={(e) => this.handleChange(e, onChange)}
             />
             <input
-              type="text"
+              type="number"
               name="priority"
               className="form-control mx-2"
               placeholder="Add priority"
